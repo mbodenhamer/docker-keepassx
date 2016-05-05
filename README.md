@@ -1,13 +1,12 @@
-Run `keepassx` in a Docker container.
+[![](https://travis-ci.org/mbodenhamer/docker-keepassx.svg?branch=master)](https://travis-ci.org/mbodenhamer/docker-keepassx)
 
-To minimally launch the application, run:
+Dockerized [KeePassX](https://www.keepassx.org/).
+
+## Usage
+
+Suppose you have a database named `foo.kdb` in your current directory that you wish to open in KeePassX. The application can be invoked like so:
 
     $ docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY \
-	      mbodenhamer/keepassx
+	      -v $(pwd):/files mbodenhamer/keepassx foo.kdb
 
-In practice, however, you will probably want to give the container access to a specific directory containing the database file(s) of interest.
-
-    $ docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY \
-	      -v /path/to/dbs:/dbs mbodenhamer/keepassx /dbs/foo.kdb
-
-Any valid `keepassx` command-line arguments can be passed via `docker run`.
+In general, the directory containing the database files of interest needs to be mapped to the container's `/files` volume.
