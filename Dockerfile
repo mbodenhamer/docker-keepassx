@@ -7,6 +7,6 @@ RUN apt-get update && apt-get install -y \
 
 ENV QT_X11_NO_MITSHM=1
 
-VOLUME /dbs
-WORKDIR /dbs
+VOLUME /files
+WORKDIR /files
 ENTRYPOINT ["keepassx"]
